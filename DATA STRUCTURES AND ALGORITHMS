@@ -1,1 +1,183 @@
 
+#Implement a complete singly linked list class with methods append, prepend, insert_at_position, delete_by_value, search, and display.
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        return self.head is None
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=' ')
+            current = current.next
+        print()
+
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+
+    def insert_at_position(self, data, position):
+        new_node = Node(data)
+        if position == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return
+        current = self.head
+        for _ in range(position - 1):
+            if current is None:
+                raise IndexError("Position out of bounds")
+            current = current.next
+        new_node.next = current.next
+        current.next = new_node
+
+    def delete_by_value(self, value):
+        current = self.head
+        previous = None
+        while current:
+            if current.data == value:
+                if previous:
+                    previous.next = current.next
+                else:
+                    self.head = current.next
+                return
+            previous = current
+            current = current.next
+
+    def search(self, value):
+        current = self.head
+        while current:
+            if current.data == value:
+                return True
+            current = current.next
+        return False
+
+# display() - Print all elements
+def display(self):
+    current = self.head
+    while current:
+        print(current.data, end=' ')
+        current = current.next
+    print() 
+
+# is_empty() - Check if the list is empty
+def is_empty(self):
+    return self.head is None
+
+# size() - Return the number of nodes in the list
+def size(self):
+    count = 0
+    current = self.head
+    while current:
+        count += 1
+        current = current.next
+    return count
+
+
+
+
+#EXAMPLES
+# append(data) - Insert at the end(example: 10->20->30, append(40) -> 10->20->30->40)
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+my_list.display()  # Output: 5 10 20 30 None
+
+# prepend(data) - Insert at the beginning(example: 10->20->30, prepend(5) -> 5->10->20->30)
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+my_list.display()  # Output: 5 10 20 30 None
+
+# insert_at_position(data, position) - Insert at a specific position(example: 10->20->30, insert_at_position(15, 1) -> 10->15->20->30)
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+my_list.insert_at_position(15, 1)
+my_list.display()  # Output: 5 15 10 20 30 None
+
+# delete_by_value(value) - Delete a node by value(example: 10->20->30, delete_by_value(20) -> 10->30)
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+my_list.delete_by_value(20)
+my_list.display()  # Output: 5 10 30 None
+
+# search(value) - Search for a value in the list(example: 10->20->30, search(20) -> True, search(40) -> False
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+print(my_list.search(20))  # Output: True
+print(my_list.search(40))  # Output: False
+
+# display() - Print all elements in the list(example: 10->20->30, display() -> 10 20 30 None)
+def create_list():
+    my_list = SinglyLinkedList()
+    my_list.head = Node(10)
+    my_list.head.next = Node(20)
+    my_list.head.next.next = Node(30)
+    my_list.prepend(5)
+    return my_list
+my_list = create_list() # Output: 5 10 20 30 None
+my_list.display()  # Output: 5 10 20 30 None
+
+# is_empty() - Check if the list is empty(example: empty list, is_empty() -> True, non-empty list, is_empty() -> False)
+def create_list():
+    my_list = SinglyLinkedList()
+    return my_list
+my_list = create_list() # Output: None
+print(my_list.is_empty())  # Output: True
+my_list.head = Node(10)
+print(my_list.is_empty())  # Output: False
+
+#size() - Return the number of nodes in the list(example: 10->20->30, size() -> 3)
+print(my_list.size())  # Output: 1
+
+
+
+       
+    
